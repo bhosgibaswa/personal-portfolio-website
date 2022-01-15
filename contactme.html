@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+/* hdcbouahd */
+input[type=text], select, textarea {
+  width: 100%; 
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px;
+  resize: vertical ;
+}
+
+/* Style the submit button with a specific background color etc */
+.btnsubmit{
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+.btnsubmit :hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<p id="demo"></p>
+<h3 style="margin-left:15px;">CONTACT ME</h3>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="fname">Email address</label>
+    <input type="text" id="addEmail" name="Email" placeholder="Your Email.."> 
+    
+
+    <label for="lname">Phone Number</label>
+    <input type="text" id="addNumber" name="lastname" placeholder="Your ph no...">
+
+    <label for="subject">Subject</label>
+    <textarea id="addSubject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <small style="font-size: 15px;">We will not share your details with anyone , Thank You 🙏 </small> <br>
+
+    <button class="btnsubmit" id="subBtn" type="button" style="margin-top: 20px;" onclick="myFunction()">Submit</button>
+  </form>
+</div>
+<h1 id="demo"></h1>
+<script>
+   let subbtn = document.getElementById("subBtn");
+    subbtn.addEventListener("click", function (e) {
+    let addfname = document.getElementById("fname");
+    let addemail = document.getElementById("addEmail");
+    let addnumber = document.getElementById("addNumber");
+    let addsub = document.getElementById("addSubject");
+    let notes = localStorage.getItem("notes");
+    if (notes == null) {
+        notesobj = [];
+    } else {
+        notesobj = JSON.parse(notes);
+    }
+
+    let myObj = {
+        fname : addfname.value,
+        email :addemail.value,
+        number : addnumber.value,
+        subject :addsub.value,
+    }
+
+   
+    localStorage.setItem("notes", JSON.stringify(notesobj));
+    
+    addfname.value="";
+      addemail.value="";
+        addnumber.value="";
+        addsub.value="";
+    
+      alert("You have successfully submitted . Thanx for showing intrest")
+    
+});
+       
+   
+</script>
+</body>
+</html>
